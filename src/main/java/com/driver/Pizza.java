@@ -40,13 +40,14 @@ public class Pizza {
     }
 
     public void addExtraToppings(){
-        isExtraToppingAdded = true;
         if(isVeg == true){
             this.price += extraToppingPrice;
         }
         else{
             this.price += extraNonVegToppingPrice;
         }
+        isExtraToppingAdded = true;
+
     }
 
     public void addTakeaway(){
@@ -62,7 +63,12 @@ public class Pizza {
             bill += "Extra Cheese Added: " + extraCheesePrice + "\n";
         }
         if(isExtraToppingAdded) {
-            bill +=  "Extra Toppings Added: " + extraToppingPrice + "\n";
+            if(isVeg == true) {
+                bill += "Extra Toppings Added: " + extraToppingPrice + "\n";
+            }
+            else {
+                bill += "Extra Toppings Added: " + extraNonVegToppingPrice + "\n";
+            }
         }
         if(isOptedForTakeAway) {
             bill += "Paperbag Added: " + paperBag + "\n";
